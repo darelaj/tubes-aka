@@ -30,8 +30,8 @@
             <button
                 id="submitBtn"
                 disabled
-                class="px-5 py-3 bg-indigo-600 text-white font-semibold rounded-lg
-                       hover:bg-indigo-500 opacity-50 cursor-not-allowed transition">
+                class="px-5 py-3 bg-red-600 text-white font-semibold rounded-lg
+                       hover:bg-red-500 opacity-50 cursor-not-allowed transition">
                 Hitung
             </button>
         </div>

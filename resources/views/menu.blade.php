@@ -26,13 +26,18 @@
                 Iteratif
             </a>
 
+            <a href="/perbandingan"
+            class="px-7 py-3 bg-red-600 text-white font-semibold rounded-lg
+                    hover:bg-red-500 transition shadow-lg shadow-red-500/30">
+                Perbandingan
+            </a>
+
             <a href="/rekursif"
             class="px-7 py-3 bg-emerald-600 text-white font-semibold rounded-lg
                     hover:bg-emerald-500 transition shadow-lg shadow-emerald-500/30">
                 Rekursif
             </a>
         </div>
-
 
     </div>
 </body>
