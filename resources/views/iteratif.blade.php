@@ -10,30 +10,41 @@
 
     <div class="flex flex-col items-center gap-4 text-center">
 
+        @if ($hasil !== null)
+            <div class="p-4 text-white rounded-lg bg-slate-800">
+                <h1 class="text-2xl md:text-3xl font-bold">Faktorial dari {{ $number }} adalah {{ $hasil }}</h1>
+            </div>
+        @endif
+
+        <br>
         <h1 class="text-xl md:text-2xl font-semibold text-slate-200">
             Input angka untuk dihitung faktorialnya:
         </h1>
 
         <div class="flex gap-3">
-            <input
-                id="numberInput"
-                type="number"
-                min="0"
-                step="1"
-                placeholder="Masukkan angka"
-                class="w-56 px-4 py-3 rounded-lg bg-slate-800 text-white
-                       border border-slate-600 focus:outline-none
-                       focus:ring-2 focus:ring-indigo-500"
-                oninput="validateInput()"
-            >
-
-            <button
-                id="submitBtn"
-                disabled
-                class="px-5 py-3 bg-indigo-600 text-white font-semibold rounded-lg
-                       hover:bg-indigo-500 opacity-50 cursor-not-allowed transition">
-                Hitung
-            </button>
+            <form action="{{route('iteratif')}}" method="POST">
+                @csrf
+                <input
+                    id="numberInput"
+                    name="number"
+                    type="number"
+                    min="0"
+                    step="1"
+                    placeholder="Masukkan angka"
+                    class="w-56 px-4 py-3 rounded-lg bg-slate-800 text-white
+                        border border-slate-600 focus:outline-none
+                        focus:ring-2 focus:ring-indigo-500"
+                    oninput="validateInput()"
+                >
+                <button
+                    type="submit"
+                    id="submitBtn"
+                    disabled
+                    class="px-5 py-3 bg-indigo-600 text-white font-semibold rounded-lg
+                        hover:bg-indigo-500 opacity-50 cursor-not-allowed transition">
+                    Hitung
+                </button>
+            </form>
         </div>
 
         <p id="errorMsg" class="text-sm text-red-500 hidden">
