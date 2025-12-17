@@ -15,8 +15,12 @@ Route::get('/perbandingan', function () {
     return view('perbandingan');
 });
 
+// Route untuk menampilkan form
 Route::get('/rekursif', function () {
     return view('rekursif');
-});
+})->name('rekursif-tampilan'); // Sesuai dengan redirect Anda
+
+// Route untuk proses perhitungan
+Route::post('/rekursif/calculate', [CalculateController::class, 'calculateRekursif'])->name('calculate.rekursif');
 
 Route::post('/hitung-iteratif', [CalculateController::class, 'calculateIteratif'])->name('iteratif');
