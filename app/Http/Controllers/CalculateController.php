@@ -19,7 +19,7 @@ class CalculateController extends Controller
             $result = 1;
             for ($i = 2; $i <= $n; $i++)
             {
-            $result *= $i;
+                $result *= $i;
             }
             return $result;
         }
@@ -28,16 +28,36 @@ class CalculateController extends Controller
     public function calculateIteratif(Request $request)
     {
         $number = (int) $request->input('number');
-        $hasil = $this->iteratif($number);
+        
+        // Gunakan BCMath untuk angka besar
+        if ($number > 170) {
+            $hasil = $this->iteratifBC($number);
+        } else {
+            $hasil = $this->iteratif($number);
+        }
+        
         return redirect()->route('iteratif-tampilan')->with(['hasil' => $hasil, 'number' => $number])->withInput();
     }
+
+    public function iteratifBC($n)
+    {
+        if ($n < 0) {
+            return null;
+        } else if ($n == 0 || $n == 1) {
+            return 1;
+        } else {
+            $result = '1';
+            for ($i = 2; $i <= $n; $i++) {
+                $result = bcmul($result, (string)$i);
+            }
+            $exponent = strlen($result) - 1;
+            $mantissa = substr($result, 0, 1) . '.' . substr($result, 1, 2);
+            return $mantissa . 'E+' . $exponent;
+        }
+    }
+
     public function rekursif($n)
     {
-        // Validasi untuk mencegah stack overflow
-        if ($n > 1000) {
-            return "Angka terlalu besar untuk rekursif";
-        }
-
         if ($n < 0) {
             return null;
         }
@@ -53,19 +73,33 @@ class CalculateController extends Controller
     {
         $number = (int) $request->input('number');
 
-        // Validasi tambahan
-        if ($number > 1000) {
-            return redirect()->route('rekursif-tampilan')->with([
-                'error' => 'Angka terlalu besar untuk perhitungan rekursif',
-                'number' => $number
-            ])->withInput();
+        // Gunakan BCMath untuk angka besar
+        if ($number > 170) {
+            $hasil = $this->rekursifBC($number);
+        } else {
+            $hasil = $this->rekursif($number);
         }
-
-        $hasil = $this->rekursif($number);
 
         return redirect()->route('rekursif-tampilan')->with([
             'hasil' => $hasil,
             'number' => $number
         ])->withInput();
+    }
+
+    public function rekursifBC($n)
+    {
+        if ($n < 0) {
+            return null;
+        } else if ($n == 0 || $n == 1) {
+            return 1;
+        } else {
+            $result = '1';
+            for ($i = 2; $i <= $n; $i++) {
+                $result = bcmul($result, (string)$i);
+            }
+            $exponent = strlen($result) - 1;
+            $mantissa = substr($result, 0, 1) . '.' . substr($result, 1, 2);
+            return $mantissa . 'E+' . $exponent;
+        }
     }
 }
