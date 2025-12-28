@@ -22,7 +22,7 @@ Proyek ini bertujuan untuk menganalisis dan membandingkan efisiensi performa alg
 | **Time Complexity** | $O((V + E) \log V)$ | $O((V + E) \log V)$ |
 | **Space Complexity** | $O(V)$ | $O(V + \text{Recursion Depth})$ |
 
-## Kontributor
+## Anggota Kelompok
 - **Darel Ajni Fahrezi** - (103012580009)
 - **Dzaki Alwan Firjatullah** - (103012580006)
 - **Yasser Abdulah Ramadhan** - (103012580039)
