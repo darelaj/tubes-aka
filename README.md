@@ -21,8 +21,6 @@ Proyek ini bertujuan untuk menganalisis dan membandingkan efisiensi performa alg
 |-------|----------|----------|
 | **Time Complexity** | $O((V + E) \log V)$ | $O((V + E) \log V)$ |
 | **Space Complexity** | $O(V)$ | $O(V + \text{Recursion Depth})$ |
-| **Kelebihan** | Lebih hemat memori, aman untuk graf besar. | Kode lebih deklaratif. |
-| **Kekurangan** | Logika perulangan lebih kompleks. | Berisiko *stack overflow* pada graf dengan kedalaman tinggi. |
 
 ## Kontributor
 - **Darel Ajni Fahrezi** - (103012580009)
